@@ -68,8 +68,8 @@ export default function MainPage() {
   const itemsQuantity = items.filter((item) => item.checked === false).length;
 
   return (
-    <div className="flex items-center bg-green-200  justify-center w-auto h-full  max-h-screen  ">
-      <div className=" grid  justify-center items-center bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg  ">
+    <div className="flex items-center bg-green-200  justify-center h-100 w-100  max-h-screen  ">
+      <div className=" grid  justify-center items-center bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg  h-100 w-full">
         <div className="	display: flex flex-row justify-center items-center">
           <p className=" flex items-center justify-center text-7xl text-gray-500 font-mono font-extrabold ">
             ToDo
@@ -98,7 +98,7 @@ export default function MainPage() {
             className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </form>
-        <div className="  max-h-full md:max-h-screen ">
+        <div className=" h-100 w-full d:max-h-screen ">
           {items
             .filter((item) => filter === undefined || item.checked === filter)
             .map((item) => (
