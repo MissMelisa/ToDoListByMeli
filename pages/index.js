@@ -69,7 +69,7 @@ export default function MainPage() {
 
   return (
     <div className="flex items-center bg-green-200  justify-center w-auto h-full  max-h-screen  ">
-      <div className=" grid  justify-center items-center bg-white rounded shadow-lg p-8 m-4    w-auto h-full  max-h-screen  ">
+      <div className=" grid  justify-center items-center bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg  ">
         <div className="	display: flex flex-row justify-center items-center">
           <p className=" flex items-center justify-center text-7xl text-gray-500 font-mono font-extrabold ">
             ToDo

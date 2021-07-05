@@ -15,7 +15,7 @@ function ItemBox({ onClick, children, onChange, checked, id, handleEditItem }) {
   }
 
   return (
-    <div className="  rounded overflow-hidden shadow-lg cursor-pointer  font-sans antialiased display: flex align-center  justify-between  m-1">
+    <div className=" shadow appearance-none border rounded  text-grey-darker  cursor-pointer w-auto    font-sans  display: flex align-center  justify-between  m-1">
       <input
         type="checkbox"
         checked={checked}
@@ -31,7 +31,7 @@ function ItemBox({ onClick, children, onChange, checked, id, handleEditItem }) {
       ) : (
         <p
           className={classnames(
-            "w-auto font-sans  antialiased text-xl font-medium sm:subpixel-antialiased md:antialiased mt-5 md:my-5 self-center ",
+            "w-auto font-sans  antialiased text-xl  md:my-5 self-center ",
             {
               ["line-through text-gray-400"]: checked === true,
             }
