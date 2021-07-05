@@ -68,7 +68,7 @@ export default function MainPage() {
   const itemsQuantity = items.filter((item) => item.checked === false).length;
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-green-300 py-12 px-4 sm:px-6 lg:px-8 bg-green-500 bg-no-repeat bg-cover relative items-center ">
+    <div className="relative min-h-screen flex items-center justify-center bg-green-300 py-12 px-4 sm:px-6 lg:px-8 bg-green-400 bg-no-repeat bg-cover relative items-center ">
       <div className=" grid  justify-center items-center bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg  h-100 w-full ">
         <div className="	display: flex flex-row justify-center items-center">
           <p className=" flex items-center justify-center text-7xl text-gray-500 font-mono font-extrabold ">
