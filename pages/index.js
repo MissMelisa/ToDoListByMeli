@@ -1,11 +1,20 @@
-import { useState } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 
 import ItemBox from "../Components/ItemBox";
 import "tailwindcss/tailwind.css";
 
 export default function MainPage() {
-  const [items, setItems] = useState([]);
   const [filter, setFilter] = useState();
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    setItems(JSON.parse(localStorage.getItem("myList")) || []);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("myList", JSON.stringify(items));
+  }, [items]);
 
   function onSubmitValue(ev) {
     ev.preventDefault();
@@ -48,15 +57,19 @@ export default function MainPage() {
     setFilter(value);
   }
 
+  function handleEditItem(id, value) {
+    const newItems = [...items];
+    const editItem = newItems.find((item) => item.id === id);
+    editItem.value = value;
+
+    setItems(newItems);
+  }
+
   const itemsQuantity = items.filter((item) => item.checked === false).length;
 
   return (
-    <div
-      className={
-        "flex items-center bg-green-200  justify-center w-full  md:max-h-full  "
-      }
-    >
-      <div className=" grid  justify-center items-center bg-white rounded shadow-lg p-8 m-4   w-auto max-h-full    ">
+    <div className="flex items-center bg-green-200  justify-center w-auto h-full  max-h-screen  ">
+      <div className=" grid  justify-center items-center bg-white rounded shadow-lg p-8 m-4    w-auto h-full  max-h-screen  ">
         <div className="	display: flex flex-row justify-center items-center">
           <p className=" flex items-center justify-center text-7xl text-gray-500 font-mono font-extrabold ">
             ToDo
@@ -90,6 +103,7 @@ export default function MainPage() {
             .filter((item) => filter === undefined || item.checked === filter)
             .map((item) => (
               <ItemBox
+                handleEditItem={handleEditItem}
                 id={item.id}
                 checked={item.checked}
                 onChange={() => handleCheckBox(item.id)}
@@ -100,14 +114,14 @@ export default function MainPage() {
             ))}
         </div>
 
-        <span className="max-w-sm md:max-w-lg m-2 border border-600 md:box-content cursor-pointer  font-sans antialiased display: flex">
+        <span className="max-w-sm md:max-w-lg m-2 font-sans antialiased  text-gray-400  text-sm">
           {itemsQuantity} items left
         </span>
 
         <div className="inline-flex">
           <button
             className={
-              "bg-green-600 hover:bg-teal-dark text-white font-bold py-2 px-2 rounded  shadow m-1"
+              "bg-green-600 hover:bg-teal-dark  text-white font-bold py-2 px-2 rounded  shadow m-1"
             }
             onClick={() => handleOnClickFilter()}
           >
