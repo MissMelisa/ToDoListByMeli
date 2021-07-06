@@ -15,7 +15,7 @@ function ItemBox({ onClick, children, onChange, checked, id, handleEditItem }) {
   }
 
   return (
-    <div className=" shadow appearance-none border rounded  text-grey-darker  cursor-pointer w-auto    font-sans  display: flex align-center  justify-between  m-1">
+    <div className=" shadow appearance-none border rounded  text-grey-darker  cursor-pointer w-auto h-auto   font-sans  display: flex align-center  justify-between  m-1">
       <input
         type="checkbox"
         checked={checked}
@@ -57,7 +57,7 @@ function ItemBox({ onClick, children, onChange, checked, id, handleEditItem }) {
         <svg
           onClick={onClick}
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 self-start m-2"
+          className="h-6 w-6 self-start m-2  fill-current"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
