@@ -64,11 +64,11 @@ export default function MainPage() {
 
     setItems(newItems);
   }
-
+  console.log(items);
   const itemsQuantity = items.filter((item) => item.checked === false).length;
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-green-300 py-12 px-4 sm:px-6 lg:px-8 bg-green-400 bg-no-repeat bg-cover relative items-center ">
+    <div className="relative h-100 w-full flex items-center justify-center font-sans bg-blue-500 md:bg-green-500">
       <div className=" grid  justify-center items-center bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg  h-100 w-full ">
         <div className="	display: flex flex-row justify-center items-center">
           <p className=" flex items-center justify-center text-7xl text-gray-500 font-mono font-extrabold ">
@@ -94,8 +94,8 @@ export default function MainPage() {
             type="text"
             id="createIssue"
             name="createIssue"
-            placeholder="What need to be done?"
-            className=" text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+            placeholder="What need to be done? "
+            className=" shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker focus:bg-white "
           />
         </form>
         <div className="  d:max-h-screen  p-8">
@@ -108,9 +108,8 @@ export default function MainPage() {
                 checked={item.checked}
                 onChange={() => handleCheckBox(item.id)}
                 onClick={() => handleOnDelete(item.id)}
-              >
-                {item.value}
-              </ItemBox>
+                text={item.value}
+              />
             ))}
         </div>
 
