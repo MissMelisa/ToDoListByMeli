@@ -16,7 +16,7 @@ function ItemBox({ onClick, text, onChange, checked, id, handleEditItem }) {
   }
 
   return (
-    <div className=" shadow appearance-none border rounded  text-grey-darker  cursor-pointer w-auto h-auto   font-sans  display: flex align-center  justify-between  m-1">
+    <div className="shadow appearance-none border rounded  text-grey-darker  cursor-pointer w-auto h-auto   font-sans  display: flex align-center  justify-between  m-1">
       <input
         type="checkbox"
         checked={checked}
