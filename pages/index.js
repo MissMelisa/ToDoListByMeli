@@ -2,29 +2,45 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import ItemBox from "../Components/ItemBox";
+import firebase from "../firebase";
 import "tailwindcss/tailwind.css";
 
 export default function MainPage() {
   const [filter, setFilter] = useState();
   const [items, setItems] = useState([]);
 
+  // useEffect(() => {
+  //   setItems(JSON.parse(localStorage.getItem("myList")) || []);
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem("myList", JSON.stringify(items));
+  // }, [items]);
+
   useEffect(() => {
-    setItems(JSON.parse(localStorage.getItem("myList")) || []);
+    const todoRef = firebase.database().ref("Todo");
+    todoRef.on("value", (snapshot) => {
+      const todos = snapshot.val();
+      const todoItems = [];
+      for (let id in todos) {
+        todoItems.push({ id, ...todos[id] });
+      }
+      setItems(todoItems);
+    });
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("myList", JSON.stringify(items));
-  }, [items]);
-
   function onSubmitValue(ev) {
+    const todoRef = firebase.database().ref("Todo");
     ev.preventDefault();
     const { createIssue } = ev.target.elements;
+
     const todo = {
-      id: items.length + 1,
+      // id: items.length + 1,
       value: createIssue.value,
       checked: false,
     };
 
+    todoRef.push(items);
     setItems([...items, todo]);
   }
 
@@ -64,7 +80,7 @@ export default function MainPage() {
 
     setItems(newItems);
   }
-  console.log(items);
+
   const itemsQuantity = items.filter((item) => item.checked === false).length;
 
   return (
@@ -101,8 +117,9 @@ export default function MainPage() {
         <div className="  d:max-h-screen  p-8">
           {items
             .filter((item) => filter === undefined || item.checked === filter)
-            .map((item) => (
+            .map((item, index) => (
               <ItemBox
+                key={index}
                 handleEditItem={handleEditItem}
                 id={item.id}
                 checked={item.checked}
