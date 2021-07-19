@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { classnames } from "tailwindcss-classnames";
 
-function ItemBox({ text, onChange, checked, id, handleEditItem, onClick }) {
+function ItemBox({ text, onChange, checked, id, onEditItem, onClick }) {
   const [edit, setEdit] = useState(false);
   const [value, setValue] = useState(text);
 
@@ -14,7 +14,7 @@ function ItemBox({ text, onChange, checked, id, handleEditItem, onClick }) {
 
   function handleSave() {
     setEdit(false);
-    handleEditItem(id, value);
+    onEditItem(id, value);
   }
 
   return (
@@ -48,7 +48,6 @@ function ItemBox({ text, onChange, checked, id, handleEditItem, onClick }) {
           <span
             className="font-sans  text-gray-400  text-sm   m-4"
             onClick={handleOnClickEdit}
-            handleEditItem={handleEditItem}
           >
             Edit
           </span>
@@ -78,25 +77,16 @@ function ItemBox({ text, onChange, checked, id, handleEditItem, onClick }) {
             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
           />
         </svg>
-
-        {/* <Exit
-        
-          onClick={onClick}
-          className="h-6 w-6 self-start m-2 fill-current"
-          width={100}
-          height={100}
-          fill={"red"}
-        /> */}
       </div>
     </div>
   );
 }
-ItemBox.PropTypes = {
+ItemBox.propTypes = {
   text: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
-  id: PropTypes.number.isRequired,
-  handleEditItem: PropTypes.func,
+  id: PropTypes.string.isRequired,
+  onEditItem: PropTypes.func,
   onClick: PropTypes.func.isRequired,
 };
 

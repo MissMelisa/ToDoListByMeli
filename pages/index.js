@@ -120,7 +120,7 @@ export default function MainPage() {
             .map((item, index) => (
               <ItemBox
                 key={index}
-                handleEditItem={handleEditItem}
+                onEditItem={handleEditItem}
                 id={item.id}
                 checked={item.checked}
                 onChange={() => handleCheckBox(item.id)}
