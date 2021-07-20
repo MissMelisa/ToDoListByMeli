@@ -40,45 +40,37 @@ export default function MainPage() {
       checked: false,
     };
 
-    todoRef.push(items);
-    setItems([...items, todo]);
+    todoRef.push(todo);
   }
 
   function handleOnDelete(id) {
-    const newItems = items.filter((x) => x.id !== id);
-    setItems(newItems);
+    const todoRef = firebase.database().ref("Todo").child(id);
+    todoRef.remove();
   }
 
-  function handleCheckBox(id) {
-    // const newItems = items.map((item) => {
-    //   if (item.id === id) {
-    //     return { ...item, checked: !item.checked };
-    //   }
-    //   return item;
-    // });
+  function handleCheckBox(id, checked) {
+    const todoRef = firebase.database().ref("Todo").child(id);
 
-    // clone the array (so it's a new one)
-    const newItems = items.slice(); // [...items]
+    todoRef.update({
+      checked,
+    });
+    // const newItems = items.slice();
 
-    // find the item I want to modify
-    const myTodo = items.find((i) => i.id === id);
+    // const myTodo = items.find((i) => i.id === id);
 
-    // modify the item
-    myTodo.checked = !myTodo.checked;
+    // myTodo.checked = !myTodo.checked;
 
-    // call my set state
-    setItems(newItems);
+    // setItems(newItems);
   }
   function handleOnClickFilter(value) {
     setFilter(value);
   }
 
   function handleEditItem(id, value) {
-    const newItems = [...items];
-    const editItem = newItems.find((item) => item.id === id);
-    editItem.value = value;
-
-    setItems(newItems);
+    const todoRef = firebase.database().ref("Todo").child(id);
+    todoRef.update({
+      value,
+    });
   }
 
   const itemsQuantity = items.filter((item) => item.checked === false).length;
@@ -123,7 +115,7 @@ export default function MainPage() {
                 onEditItem={handleEditItem}
                 id={item.id}
                 checked={item.checked}
-                onChange={() => handleCheckBox(item.id)}
+                onChange={() => handleCheckBox(item.id, !item.checked)}
                 onClick={() => handleOnDelete(item.id)}
                 text={item.value}
               />

@@ -1,13 +1,14 @@
 import firebase from "firebase";
+console.log(process.env);
 const firebaseConfig = {
-  apiKey: "AIzaSyBqjpS-dUjkpZmn-2ApbAHs7vQVSTiq7os",
-  authDomain: "to-do-app-f7952.firebaseapp.com",
-  databaseURL: "https://to-do-app-f7952-default-rtdb.firebaseio.com/",
-  projectId: "to-do-app-f7952",
-  storageBucket: "to-do-app-f7952.appspot.com",
-  messagingSenderId: "718005485193",
-  appId: "1:718005485193:web:e3bedf898ba55977235058",
-  measurementId: "G-7QGNKQD3BM",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTHDOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
