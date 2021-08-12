@@ -27,7 +27,6 @@ export default function TodoPage() {
     const { createIssue } = ev.target.elements;
 
     const todo = {
-      // id: items.length + 1,
       value: createIssue.value,
       checked: false,
     };
@@ -46,13 +45,6 @@ export default function TodoPage() {
     todoRef.update({
       checked,
     });
-    // const newItems = items.slice();
-
-    // const myTodo = items.find((i) => i.id === id);
-
-    // myTodo.checked = !myTodo.checked;
-
-    // setItems(newItems);
   }
   function handleOnClickFilter(value) {
     setFilter(value);
@@ -68,9 +60,9 @@ export default function TodoPage() {
   const itemsQuantity = items.filter((item) => item.checked === false).length;
 
   return (
-    <div className=" min-w-screen min-h-screen px-5 py-5 relative h-100 w-full flex items-center justify-center font-sans bg-blue-500 md:bg-green-500">
+    <div className=" min-w-screen min-h-screen px-5 py-5 relative h-100 w-full flex items-center justify-center font-sans relative h-100 w-full flex items-center justify-center font-sans bg-gradient-to-r from-green-200 to-green-500">
       <div className=" grid  justify-center items-center bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg  h-100 w-full ">
-        <div className="	display: flex flex-row justify-center items-center">
+        <div className="	display: flex flex-col justify-center items-center">
           <p className=" flex items-center justify-center text-7xl text-gray-500 font-mono font-extrabold ">
             ToDo
           </p>
@@ -129,9 +121,7 @@ export default function TodoPage() {
             All
           </button>
           <button
-            className={
-              "bg-green-600 hover:bg-teal-dark text-white font-bold py-2 px-4 rounded shadow m-1"
-            }
+            className="bg-green-600 hover:bg-teal-dark text-white font-bold py-2 px-4 rounded shadow m-1"
             onClick={() => handleOnClickFilter(true)}
           >
             Completed

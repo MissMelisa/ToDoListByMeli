@@ -10,6 +10,8 @@ const authUserContext = createContext({
   signOut: async () => {},
 });
 
+const PUBLIC_ROUTES = ["/SignUp", "/LogIn"];
+
 export function AuthUserProvider({ children }) {
   const auth = useFirebaseAuth();
   const router = useRouter();
@@ -18,8 +20,7 @@ export function AuthUserProvider({ children }) {
     if (
       !auth.loading &&
       !auth.authUser &&
-      router.route !== "/SignUp" &&
-      router.route !== "/LogIn"
+      !PUBLIC_ROUTES.includes(router.route)
     )
       router.push("/LogIn");
   }, [auth.authUser, auth.loading]);
