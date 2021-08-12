@@ -13,9 +13,14 @@ const authUserContext = createContext({
 export function AuthUserProvider({ children }) {
   const auth = useFirebaseAuth();
   const router = useRouter();
-  console.log(router);
+
   useEffect(() => {
-    if (!auth.loading && !auth.authUser && router.route !== "/SignUp")
+    if (
+      !auth.loading &&
+      !auth.authUser &&
+      router.route !== "/SignUp" &&
+      router.route !== "/LogIn"
+    )
       router.push("/LogIn");
   }, [auth.authUser, auth.loading]);
 
