@@ -1,21 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-import ItemBox from "../Components/ItemBox";
-import firebase from "../firebase";
+import ItemBox from "../../Components/ItemBox";
+import firebase from "../../firebase";
 import "tailwindcss/tailwind.css";
 
-export default function MainPage() {
+export default function TodoPage() {
   const [filter, setFilter] = useState();
   const [items, setItems] = useState([]);
-
-  // useEffect(() => {
-  //   setItems(JSON.parse(localStorage.getItem("myList")) || []);
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("myList", JSON.stringify(items));
-  // }, [items]);
 
   useEffect(() => {
     const todoRef = firebase.database().ref("Todo");
@@ -82,6 +74,7 @@ export default function MainPage() {
           <p className=" flex items-center justify-center text-7xl text-gray-500 font-mono font-extrabold ">
             ToDo
           </p>
+
           <img
             className="object-scale-down h-10   "
             src="https://media.istockphoto.com/vectors/green-grunge-check-ma rk-correct-answer-checking-vote-or-choice-icon-vector-id1051035264?b=1&k=6&m=1051035264&s=170667a&w=0&h=-_yVmpjBVAhsd01X9RBuTAlscyKCJoNN1vfMDo1jzpw="
