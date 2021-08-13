@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Link from "next/link";
+
 import { useRouter } from "next/router";
 import { useAuth } from "../authUserContext/authUserContext";
-import LogoTodo from "../../Components/LogoTodo";
 
 export default function Home() {
   const [email, setEmail] = useState("");

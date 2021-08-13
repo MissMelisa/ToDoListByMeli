@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../authUserContext/authUserContext";
-import LogoTodo from "../../Components/LogoTodo";
 import { users } from "../../firebase";
 
 const SignUp = () => {

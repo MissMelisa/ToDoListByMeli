@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
-import { createContext, useContext, useEffect, useState } from "react";
-import useFirebaseAuth from "../../Hooks/useFirebaseAuthh/useFirebaseAuth";
+import { createContext, useContext, useEffect } from "react";
+import useFirebaseAuth from "../../Hooks/useFirebaseAuth/useFirebaseAuth";
 
 const authUserContext = createContext({
   authUser: null,
