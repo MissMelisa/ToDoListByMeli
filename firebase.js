@@ -16,5 +16,6 @@ if (!firebase.apps.length) {
 } else {
   firebase.app();
 }
-
 export default firebase;
+export const users = firebase.database().ref().child("users");
+export const todos = firebase.database().ref().child("todos");
