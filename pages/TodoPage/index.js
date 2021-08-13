@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import ItemBox from "../../Components/ItemBox";
-import firebase, { todos } from "../../firebase";
+import { todos } from "../../firebase";
 import "tailwindcss/tailwind.css";
-import LogoTodo from "../../Components/LogoTodo";
+
 import { useAuth } from "../authUserContext/authUserContext";
 
 export default function TodoPage() {

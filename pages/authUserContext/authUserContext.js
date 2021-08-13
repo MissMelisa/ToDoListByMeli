@@ -13,7 +13,7 @@ const authUserContext = createContext({
 
 const PUBLIC_ROUTES = ["/SignUp", "/LogIn"];
 
-export function AuthUserProvider({ children }) {
+export default function AuthUserProvider({ children }) {
   const auth = useFirebaseAuth();
   const router = useRouter();
 
