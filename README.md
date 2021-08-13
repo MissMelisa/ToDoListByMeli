@@ -16,7 +16,8 @@ You will also see any lint errors in the console.
 
 ## Introductions
 
-The main aim of this project was to improve my skills as a web developer. Using and keep improving my code.
+The main aim of this project was to improve my skills as a web developer. Using and keep improving my code. It is a ToDo list created in Next.js. In tis app, I integrated authentication and realtime database using Firebase.
 
-##Technologies
+## Technologies
+
 This project was created with: *React, *Git, *TailwindCSS and *FireBase
